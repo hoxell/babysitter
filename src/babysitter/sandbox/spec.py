@@ -3,10 +3,16 @@ from pathlib import Path
 from dataclasses import dataclass
 
 
+class MountAccess(Enum):
+    READ_ONLY = auto()
+    READ_WRITE = auto()
+
+
 @dataclass
 class MountSpec:
     source: Path
     target: Path
+    access: MountAccess = MountAccess.READ_ONLY
 
 
 class NetworkPolicy(Enum):
